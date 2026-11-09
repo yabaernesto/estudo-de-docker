@@ -57,3 +57,11 @@ O container e o volume têm responsabilidades completamente separadas, mas é po
 - docker run -v api-volume:/usr/src/app -p 3333:3333 -d api : criar container e definir volume. "-v" definir o nome do volume
 - docker volume ls : listar volumes
 - docker volume rm nome_do_volume : remover volume
+
+## Docker Compose
+
+- É um arquivo com especificações de todos os containers necessário para app.
+
+O Docker Compose é uma ferramenta usada para definir e executar aplicações de vários contêineres do Docker.
+
+No Compose, um Arquivo YAML é usado para configurar os serviços do aplicativo. Em seguida, você cria e inicia todos os serviços com base na sua configuração executando um só comando.

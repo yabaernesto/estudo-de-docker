@@ -1,0 +1,37 @@
+services:
+  # nome do serviço
+  api:
+    # configurações de build
+    build:
+      # contexto da build "referência dos arquivos que devem ser feito o build"
+      context: .
+      # ficheiro Dockerfile
+      dockerfile: Dockerfile
+    # nome da imagem
+    image: nodejs
+    # nome do container
+    container_name: api
+    # mapeamento das portas
+    ports:
+      - "3333:3333"
+    # forma de dizer que o container depende de outro container "service"
+    depends_on:
+      - postgres
+
+  postgres:
+    image: "postgres:16-alpine"
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: api
+    volumes:
+      # endereço onde o volume está a ser armazenado, no caso, pegando do banco de dados postgres
+      - database:/var/lib/postgresql/data
+
+# definir o volume, criar o volume
+volumes:
+  # não é necessário informar a localização, o docker faz mapeamento automatico
+  database:
